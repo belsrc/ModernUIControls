@@ -2,6 +2,7 @@
     ModernButton.xaml
     Copyright (c) 2012 Bryan Kizer
     All rights reserved.
+    https://github.com/belsrc/ModernUIControls
 
     Redistribution and use in source and binary forms, with or without
     modification, are permitted provided that the following conditions are
@@ -48,16 +49,22 @@
                 Value="true" />
         <Setter Property="OverridesDefaultStyle"
                 Value="true" />
-        <Setter Property="MinHeight"
-                Value="23" />
-        <Setter Property="MinWidth"
-                Value="75" />
         <Setter Property="Opacity"
                 Value=".6" />
+        <Setter Property="Padding"
+                Value="10" />
+        <Setter Property="MinHeight"
+                Value="20" />
+        <Setter Property="MinWidth"
+                Value="40" />
         <Setter Property="Background"
                 Value="{StaticResource Blue100}" />
         <Setter Property="Foreground"
                 Value="{StaticResource White100}" />
+        <Setter Property="FontFamily"
+                Value="{StaticResource BodyFontFamily}" />
+        <Setter Property="FontSize"
+                Value="{StaticResource BodyFontSize}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
