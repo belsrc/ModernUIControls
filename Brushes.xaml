@@ -1,0 +1,137 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- Black Brush Colors -->
+    <SolidColorBrush x:Key="Black100"
+                     Color="#FF333333" />
+    <SolidColorBrush x:Key="Black80"
+                     Color="#CC333333" />
+    <SolidColorBrush x:Key="Black60"
+                     Color="#99333333" />
+    <SolidColorBrush x:Key="Black40"
+                     Color="#66333333" />
+    <SolidColorBrush x:Key="Black20"
+                     Color="#33333333" />
+    <SolidColorBrush x:Key="Black5"
+                     Color="#0D333333" />
+
+    <!-- White Brush Colors -->
+    <SolidColorBrush x:Key="White100"
+                     Color="#FFFAFAFA" />
+    <SolidColorBrush x:Key="White80"
+                     Color="#CCFAFAFA" />
+    <SolidColorBrush x:Key="White60"
+                     Color="#99FAFAFA" />
+    <SolidColorBrush x:Key="White40"
+                     Color="#66FAFAFA" />
+    <SolidColorBrush x:Key="White20"
+                     Color="#33FAFAFA" />
+
+    <!-- Blue Brush Colors -->
+    <SolidColorBrush x:Key="Blue100"
+                     Color="#FF1BA1E2" />
+    <SolidColorBrush x:Key="Blue80"
+                     Color="#CC1BA1E2" />
+    <SolidColorBrush x:Key="Blue60"
+                     Color="#991BA1E2" />
+    <SolidColorBrush x:Key="Blue40"
+                     Color="#661BA1E2" />
+    <SolidColorBrush x:Key="Blue20"
+                     Color="#331BA1E2" />
+
+    <!-- Teal Brush Colors -->
+    <SolidColorBrush x:Key="Teal100"
+                     Color="#FF00ABA9" />
+    <SolidColorBrush x:Key="Teal80"
+                     Color="#CC00ABA9" />
+    <SolidColorBrush x:Key="Teal60"
+                     Color="#9900ABA9" />
+    <SolidColorBrush x:Key="Teal40"
+                     Color="#6600ABA9" />
+    <SolidColorBrush x:Key="Teal20"
+                     Color="#3300ABA9" />
+
+    <!-- Purple Brush Colors -->
+    <SolidColorBrush x:Key="Purple100"
+                     Color="#FF910091" />
+    <SolidColorBrush x:Key="Purple80"
+                     Color="#CC910091" />
+    <SolidColorBrush x:Key="Purple60"
+                     Color="#99910091" />
+    <SolidColorBrush x:Key="Purple40"
+                     Color="#66910091" />
+    <SolidColorBrush x:Key="Purple20"
+                     Color="#33910091" />
+
+    <!-- Green Brush Colors -->
+    <SolidColorBrush x:Key="Green100"
+                     Color="#FF8CBF26" />
+    <SolidColorBrush x:Key="Green80"
+                     Color="#CC8CBF26" />
+    <SolidColorBrush x:Key="Green60"
+                     Color="#998CBF26" />
+    <SolidColorBrush x:Key="Green40"
+                     Color="#668CBF26" />
+    <SolidColorBrush x:Key="Green20"
+                     Color="#338CBF26" />
+
+    <!-- Orange Brush Colors -->
+    <SolidColorBrush x:Key="Orange100"
+                     Color="#FFEB5000" />
+    <SolidColorBrush x:Key="Orange80"
+                     Color="#CCEB5000" />
+    <SolidColorBrush x:Key="Orange60"
+                     Color="#99EB5000" />
+    <SolidColorBrush x:Key="Orange40"
+                     Color="#66EB5000" />
+    <SolidColorBrush x:Key="Orange20"
+                     Color="#33EB5000" />
+
+    <!-- Red Brush Colors -->
+    <SolidColorBrush x:Key="Red100"
+                     Color="#FFE51400" />
+    <SolidColorBrush x:Key="Red80"
+                     Color="#CCE51400" />
+    <SolidColorBrush x:Key="Red60"
+                     Color="#99E51400" />
+    <SolidColorBrush x:Key="Red40"
+                     Color="#66E51400" />
+    <SolidColorBrush x:Key="Red20"
+                     Color="#33E51400" />
+
+    <!-- Pink Brush Colors -->
+    <SolidColorBrush x:Key="Pink100"
+                     Color="#FFE671B8" />
+    <SolidColorBrush x:Key="Pink80"
+                     Color="#CCE671B8" />
+    <SolidColorBrush x:Key="Pink60"
+                     Color="#99E671B8" />
+    <SolidColorBrush x:Key="Pink40"
+                     Color="#66E671B8" />
+    <SolidColorBrush x:Key="Pink20"
+                     Color="#33E671B8" />
+
+    <!-- Brown Brush Colors -->
+    <SolidColorBrush x:Key="Brown100"
+                     Color="#FFA05000" />
+    <SolidColorBrush x:Key="Brown80"
+                     Color="#CCA05000" />
+    <SolidColorBrush x:Key="Brown60"
+                     Color="#99A05000" />
+    <SolidColorBrush x:Key="Brown40"
+                     Color="#66A05000" />
+    <SolidColorBrush x:Key="Brown20"
+                     Color="#33A05000" />
+
+    <!-- Yellow Brush Colors -->
+    <SolidColorBrush x:Key="Yellow100"
+                     Color="#FFF0C809" />
+    <SolidColorBrush x:Key="Yellow80"
+                     Color="#CCF0C809" />
+    <SolidColorBrush x:Key="Yellow60"
+                     Color="#99F0C809" />
+    <SolidColorBrush x:Key="Yellow40"
+                     Color="#66F0C809" />
+    <SolidColorBrush x:Key="Yellow20"
+                     Color="#33F0C809" />
+</ResourceDictionary>
