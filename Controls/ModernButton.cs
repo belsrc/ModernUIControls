@@ -1,5 +1,5 @@
 ﻿// -------------------------------------------------------------------------------
-//    ModernDataGrid.cs
+//    ModernButton.cs
 //    Copyright (c) 2012 Bryan Kizer
 //    All rights reserved.
 //    https://github.com/belsrc/ModernUIControls
@@ -31,20 +31,19 @@
 //    NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 //    SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 // -------------------------------------------------------------------------------
-namespace StyleTestingApp {
+namespace ModernUIControls.Controls {
     using System.Windows;
     using System.Windows.Controls;
 
     /// <summary>
-    /// TODO: Update summary.
+    /// Represents a Modern UI button control.
     /// </summary>
-    public class ModernDataGrid : DataGrid {
+    public class ModernButton : Button {
         /// <summary>
-        /// Initializes a new instance of the ModernDataGrid class.
+        /// Initializes a new instance of the ModernButton class.
         /// </summary>
-        public ModernDataGrid()
-            : base() {
-            this.Style = FindResource( "ModernDataGrid" ) as Style;
+        public ModernButton() : base() {
+            this.Style = FindResource( "ModernButton" ) as Style;
         }
     }
 }

@@ -1,5 +1,5 @@
 ﻿// -------------------------------------------------------------------------------
-//    ModernButton.cs
+//    ModernScollBar.cs
 //    Copyright (c) 2012 Bryan Kizer
 //    All rights reserved.
 //    https://github.com/belsrc/ModernUIControls
@@ -31,19 +31,20 @@
 //    NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 //    SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 // -------------------------------------------------------------------------------
-namespace StyleTestingApp {
+namespace ModernUIControls.Controls {
     using System.Windows;
-    using System.Windows.Controls;
+    using System.Windows.Controls.Primitives;
 
     /// <summary>
-    /// TODO: Update summary.
+    /// Represents a Modern UI scrollbar control.
     /// </summary>
-    public class ModernButton : Button {
+    public class ModernScollBar : ScrollBar {
         /// <summary>
-        /// Initializes a new instance of the ModernButton class.
+        /// Initializes a new instance of the ModernScollBar class.
         /// </summary>
-        public ModernButton() : base() {
-            this.Style = FindResource( "ModernButton" ) as Style;
+        public ModernScollBar()
+            : base() {
+            this.Style = FindResource( "ModernScrollBar" ) as Style;
         }
     }
 }

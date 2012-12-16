@@ -1,0 +1,20 @@
+﻿<Application xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:System="clr-namespace:System;assembly=mscorlib"
+             x:Class="ModernUIControls.App"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Styles/Brushes.xaml" />
+                <ResourceDictionary Source="Styles/Fonts.xaml" />
+                <ResourceDictionary Source="Styles/FontSizes.xaml" />
+                <ResourceDictionary Source="Styles/ModernButton.xaml" />
+                <ResourceDictionary Source="Styles/ModernDataGrid.xaml" />
+                <ResourceDictionary Source="Styles/ModernScrollBar.xaml" />
+                <ResourceDictionary Source="Styles/ModernScrollViewer.xaml" />
+                <ResourceDictionary Source="Styles/ModernTabControl.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

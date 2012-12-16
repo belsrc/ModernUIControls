@@ -1,5 +1,5 @@
 ﻿// -------------------------------------------------------------------------------
-//    ModernScollBar.cs
+//    ModernScrollViewer.cs
 //    Copyright (c) 2012 Bryan Kizer
 //    All rights reserved.
 //    https://github.com/belsrc/ModernUIControls
@@ -31,20 +31,20 @@
 //    NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 //    SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 // -------------------------------------------------------------------------------
-namespace StyleTestingApp {
+namespace ModernUIControls.Controls {
     using System.Windows;
-    using System.Windows.Controls.Primitives;
+    using System.Windows.Controls;
 
     /// <summary>
-    /// TODO: Update summary.
+    /// Represents a Modern UI scrollviewer control.
     /// </summary>
-    public class ModernScollBar : ScrollBar {
+    public class ModernScrollViewer : ScrollViewer {
         /// <summary>
-        /// Initializes a new instance of the ModernScollBar class.
+        /// Initializes a new instance of the ModernScrollViewer class.
         /// </summary>
-        public ModernScollBar()
+        public ModernScrollViewer()
             : base() {
-            this.Style = FindResource( "ModernScrollBar" ) as Style;
+            this.Style = FindResource( "ModernScrollViewer" ) as Style;
         }
     }
 }

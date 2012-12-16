@@ -1,5 +1,5 @@
 ﻿// -------------------------------------------------------------------------------
-//    ModernScrollViewer.cs
+//    ModernDataGrid.cs
 //    Copyright (c) 2012 Bryan Kizer
 //    All rights reserved.
 //    https://github.com/belsrc/ModernUIControls
@@ -31,20 +31,20 @@
 //    NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 //    SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 // -------------------------------------------------------------------------------
-namespace StyleTestingApp {
+namespace ModernUIControls.Controls {
     using System.Windows;
     using System.Windows.Controls;
 
     /// <summary>
-    /// TODO: Update summary.
+    /// Represents a Modern UI datagrid control.
     /// </summary>
-    public class ModernScrollViewer : ScrollViewer {
+    public class ModernDataGrid : DataGrid {
         /// <summary>
-        /// Initializes a new instance of the ModernScrollViewer class.
+        /// Initializes a new instance of the ModernDataGrid class.
         /// </summary>
-        public ModernScrollViewer()
+        public ModernDataGrid()
             : base() {
-            this.Style = FindResource( "ModernScrollViewer" ) as Style;
+            this.Style = FindResource( "ModernDataGrid" ) as Style;
         }
     }
 }
