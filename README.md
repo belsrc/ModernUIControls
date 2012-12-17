@@ -9,7 +9,7 @@ States: Rest (Top), Hover (Bottom)
 
 **ModernDataGrid**  
 
-**ModernScollBar && ModernScrollViewer**  
+**ModernScollBar** && **ModernScrollViewer**  
 ![alt ModernScollBar](http://bryanckizer.com/gitimg/scroll-bar.png)
 
 **ModernTabControl**  
