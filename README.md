@@ -3,7 +3,8 @@ Modern UI Controls is a simple set of WPF styles and user controls that have a M
 
 Currently there are 7 different styles/controls.
 
-**ModernButton** States: Rest (Top), Hover (Bottom)  
+**ModernButton**  
+States: Rest (Top), Hover (Bottom)  
 ![alt ModernButton](http://bryanckizer.com/gitimg/button.png)
 
 **ModernDataGrid**  
@@ -13,10 +14,12 @@ Currently there are 7 different styles/controls.
 
 **ModernScrollViewer**  
 
-**ModernTabControl** States (Left to Right): Rest, Hover, Active  
+**ModernTabControl**  
+States (Left to Right): Rest, Hover, Active  
 ![alt ModernTabControl](http://bryanckizer.com/gitimg/tab-control.png)
 
-**SlideCheck** States (Left to Right): Unchecked, Checked  
+**SlideCheck**  
+States: Unchecked (Left), Checked (Right)  
 ![alt SlideCheck](http://bryanckizer.com/gitimg/check-sliders.png)
 
 **WindowStateButtons**  
