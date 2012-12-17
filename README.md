@@ -9,10 +9,8 @@ States: Rest (Top), Hover (Bottom)
 
 **ModernDataGrid**  
 
-**ModernScollBar**  
+**ModernScollBar && ModernScrollViewer**  
 ![alt ModernScollBar](http://bryanckizer.com/gitimg/scroll-bar.png)
-
-**ModernScrollViewer**  
 
 **ModernTabControl**  
 States (Left to Right): Rest, Hover, Active  
@@ -23,6 +21,7 @@ States: Unchecked (Left), Checked (Right)
 ![alt SlideCheck](http://bryanckizer.com/gitimg/check-sliders.png)
 
 **WindowStateButtons**  
+States (Left to Right): Rest, Hover, Rest  
 ![alt WindowStateButtons](http://bryanckizer.com/gitimg/win-state-btns.png)  
 
 ### License
