@@ -5,30 +5,30 @@ Currently there are 7 different styles/controls.
 
 **ModernButton**  
 States: Rest (Top), Hover (Bottom)  
-![alt ModernButton](http://bryanckizer.com/gitimg/button.png)  
+![alt Modern Button](http://bryanckizer.com/gitimg/button.png)  
 
 **ModernDataGrid**  
 Cell States (Left to Right): Rest, Hover, Active  
-![alt ModernDataGrid](http://bryanckizer.com/gitimg/datagrid.png)  
+![alt Modern Data Grid](http://bryanckizer.com/gitimg/datagrid.png)  
 
 **ModernScollBar** && **ModernScrollViewer**  
-![alt ModernScollBar](http://bryanckizer.com/gitimg/scroll-bar.png)  
+![alt Modern Scoll Bar](http://bryanckizer.com/gitimg/scroll-bar.png)  
 
 **ModernTabControl**  
 States (Left to Right): Rest, Hover, Active  
-![alt ModernTabControl](http://bryanckizer.com/gitimg/tab-control.png)  
+![alt Modern Tab Control](http://bryanckizer.com/gitimg/tab-control.png)  
 
 **SlideCheck**  
 States: Unchecked (Left), Checked (Right)  
-![alt SlideCheck](http://bryanckizer.com/gitimg/check-sliders.png)  
+![alt Slide Check](http://bryanckizer.com/gitimg/check-sliders.png)  
 
 **WindowStateButtons**  
 States (Left to Right): Rest, Hover, Rest  
-![alt WindowStateButtons](http://bryanckizer.com/gitimg/win-state-btns.png)  
+![alt Window State Buttons](http://bryanckizer.com/gitimg/win-state-btns.png)  
 
 **Colors**  
 All include a 100, 80, 60, 40, and 20 opacity version
-![alt WindowStateButtons](http://bryanckizer.com/gitimg/colors.png)  
+![alt Colors](http://bryanckizer.com/gitimg/colors.png)  
 
 ### License
 ModernUIControls is released under a BSD 3-Clause License
