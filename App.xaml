@@ -7,13 +7,14 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Styles/Brushes.xaml" />
-                <ResourceDictionary Source="Styles/Fonts.xaml" />
                 <ResourceDictionary Source="Styles/FontSizes.xaml" />
+                <ResourceDictionary Source="Styles/Fonts.xaml" />
+                <ResourceDictionary Source="Styles/ModernScrollViewer.xaml" />
+                <ResourceDictionary Source="Styles/ModernScrollBar.xaml" />
                 <ResourceDictionary Source="Styles/ModernButton.xaml" />
                 <ResourceDictionary Source="Styles/ModernDataGrid.xaml" />
-                <ResourceDictionary Source="Styles/ModernScrollBar.xaml" />
-                <ResourceDictionary Source="Styles/ModernScrollViewer.xaml" />
-                <ResourceDictionary Source="Styles/ModernTabControl.xaml" />
+                <ResourceDictionary Source="Styles/ModernTabItem.xaml" />
+                <ResourceDictionary Source="Styles/ModernListBox.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
