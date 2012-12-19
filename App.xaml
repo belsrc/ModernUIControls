@@ -15,6 +15,8 @@
                 <ResourceDictionary Source="Styles/ModernDataGrid.xaml" />
                 <ResourceDictionary Source="Styles/ModernTabItem.xaml" />
                 <ResourceDictionary Source="Styles/ModernListBox.xaml" />
+                <ResourceDictionary Source="Styles/ModernExpander.xaml" />
+                <ResourceDictionary Source="Styles/ModernComboBox.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
