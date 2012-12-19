@@ -42,7 +42,8 @@ namespace ModernUIControls.Controls {
         /// <summary>
         /// Initializes a new instance of the ModernButton class.
         /// </summary>
-        public ModernButton() : base() {
+        public ModernButton()
+            : base() {
             this.Style = FindResource( "ModernButton" ) as Style;
         }
     }

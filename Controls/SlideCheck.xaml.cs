@@ -45,9 +45,9 @@ namespace ModernUIControls.Controls {
     /// <remarks>
     /// Public Control Properties:
     ///     IsChecked: bool
-    ///     CheckedColor: Brush
-    ///     UncheckedColor: Brush
-    ///     SliderColor: Brush
+    ///     CheckedBrush: Brush
+    ///     UncheckedBrush: Brush
+    ///     ThumbBrush: Brush
     ///
     /// Public Event
     ///     CheckChanged
@@ -75,8 +75,8 @@ namespace ModernUIControls.Controls {
         /// <summary>
         /// Dependency Property for CheckedColor.
         /// </summary>
-        public static readonly DependencyProperty CheckedColorProperty =
-                                                  DependencyProperty.Register( "CheckedColor",              // name of the dependency property to register
+        public static readonly DependencyProperty CheckedBrushProperty =
+                                                  DependencyProperty.Register( "CheckedBrush",              // name of the dependency property to register
                                                                                typeof( Brush ),             // type of the property
                                                                                typeof( SlideCheck ),        // owner type that is registering the property
                                                                                new PropertyMetadata(        // metadata (default value) for the property
@@ -89,21 +89,21 @@ namespace ModernUIControls.Controls {
         /// <summary>
         /// Gets or sets the fill color for the Checked path.
         /// </summary>
-        public Brush CheckedColor {
-            get { return ( Brush )GetValue( CheckedColorProperty ); }
-            set { SetValue( CheckedColorProperty, value ); }
+        public Brush CheckedBrush {
+            get { return ( Brush )GetValue( CheckedBrushProperty ); }
+            set { SetValue( CheckedBrushProperty, value ); }
         }
 
         /// <summary>
         /// Dependency Property for UncheckedColor.
         /// </summary>
-        public static readonly DependencyProperty UncheckedColorProperty =
-                                                  DependencyProperty.Register( "UncheckedColor",            // name of the dependency property to register
+        public static readonly DependencyProperty UncheckedBrushProperty =
+                                                  DependencyProperty.Register( "UncheckedBrush",            // name of the dependency property to register
                                                                                typeof( Brush ),             // type of the property
                                                                                typeof( SlideCheck ),        // owner type that is registering the property
                                                                                new PropertyMetadata(        // metadata (default value) for the property
                                                                                    new SolidColorBrush(
-                                                                                       Color.FromArgb( 153, 51, 51, 51 )
+                                                                                       Color.FromArgb( 255, 125, 125, 125 )
                                                                                    )
                                                                                )
                                                                              );
@@ -111,16 +111,16 @@ namespace ModernUIControls.Controls {
         /// <summary>
         /// Gets or sets the fill color for the Unchecked path.
         /// </summary>
-        public Brush UncheckedColor {
-            get { return ( Brush )GetValue( UncheckedColorProperty ); }
-            set { SetValue( UncheckedColorProperty, value ); }
+        public Brush UncheckedBrush {
+            get { return ( Brush )GetValue( UncheckedBrushProperty ); }
+            set { SetValue( UncheckedBrushProperty, value ); }
         }
 
         /// <summary>
         /// Dependency Property for SliderColor.
         /// </summary>
-        public static readonly DependencyProperty SliderColorProperty =
-                                                  DependencyProperty.Register( "SliderColor",               // name of the dependency property to register
+        public static readonly DependencyProperty ThumbBrushProperty =
+                                                  DependencyProperty.Register( "ThumbBrush",               // name of the dependency property to register
                                                                                typeof( Brush ),             // type of the property
                                                                                typeof( SlideCheck ),        // owner type that is registering the property
                                                                                new PropertyMetadata(        // metadata (default value) for the property
@@ -133,9 +133,9 @@ namespace ModernUIControls.Controls {
         /// <summary>
         /// Gets or sets the fill color for the Slider path.
         /// </summary>
-        public Brush SliderColor {
-            get { return ( Brush )GetValue( SliderColorProperty ); }
-            set { SetValue( SliderColorProperty, value ); }
+        public Brush ThumbBrush {
+            get { return ( Brush )GetValue( ThumbBrushProperty ); }
+            set { SetValue( ThumbBrushProperty, value ); }
         }
 
         /// <summary>
@@ -164,7 +164,7 @@ namespace ModernUIControls.Controls {
         private static void CheckedValueChanged( DependencyObject obj, DependencyPropertyChangedEventArgs args ) {
             SlideCheck sc = ( obj as SlideCheck );
             if( sc.IsChecked ) {
-                sc.AnimateSlider( 1 );
+                sc.AnimateSlider( 0 );
             }
             else {
                 sc.AnimateSlider( -46 );

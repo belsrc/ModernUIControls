@@ -2,7 +2,7 @@
     ModernDataGrid.xaml
     Copyright (c) 2012 Bryan Kizer
     All rights reserved.
-    https://github.com/belsrc/ModernUIControls
+
 
     Redistribution and use in source and binary forms, with or without
     modification, are permitted provided that the following conditions are
@@ -39,7 +39,7 @@
         <ResourceDictionary Source="Brushes.xaml" />
         <ResourceDictionary Source="FontSizes.xaml" />
         <ResourceDictionary Source="Fonts.xaml" />
-        <ResourceDictionary Source="ModernScrollBar.xaml" />
+        <ResourceDictionary Source="ModernScrollViewer.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
     <!-- Start DataGrid Styles -->
@@ -63,6 +63,77 @@
                 Value="Transparent" />
         <Setter Property="AutoGenerateColumns"
                 Value="False" />
+        <Setter Property="Template">
+            <Setter.Value>
+
+                <!-- DataGrid Body -->
+                <ControlTemplate TargetType="{x:Type DataGrid}">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            SnapsToDevicePixels="True"
+                            Padding="{TemplateBinding Padding}">
+                        <ScrollViewer   Focusable="false"
+                                        Name="DG_ScrollViewer"
+                                        Style="{StaticResource ModernScrollViewer}">
+                            <ScrollViewer.Template>
+                                <ControlTemplate TargetType="{x:Type ScrollViewer}">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*" />
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+
+                                        <Grid Grid.Row="0"
+                                              Grid.Column="0">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="*" />
+                                            </Grid.RowDefinitions>
+
+                                            <!--Column Headers-->
+                                            <DataGridColumnHeadersPresenter Grid.Row="0"
+                                                                            Name="PART_ColumnHeadersPresenter"
+                                                                            Visibility="{Binding RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}, Path=HeadersVisibility, Converter={x:Static DataGrid.HeadersVisibilityConverter}, ConverterParameter={x:Static DataGridHeadersVisibility.Column}}" />
+
+                                            <!--DataGrid content-->
+                                            <ScrollContentPresenter x:Name="PART_ScrollContentPresenter"
+                                                                    Grid.Row="1"
+                                                                    CanContentScroll="{TemplateBinding CanContentScroll}" />
+                                        </Grid>
+
+                                        <ScrollBar Grid.Column="1"
+                                                   Grid.Row="0"
+                                                   Name="PART_VerticalScrollBar"
+                                                   Orientation="Vertical"
+                                                   Maximum="{TemplateBinding ScrollableHeight}"
+                                                   ViewportSize="{TemplateBinding ViewportHeight}"
+                                                   Value="{Binding Path=VerticalOffset, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                                   Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}"
+                                                   Style="{StaticResource ModernScrollBar}" />
+
+                                        <ScrollBar Grid.Row="1"
+                                                   Grid.Column="0"
+                                                   Name="PART_HorizontalScrollBar"
+                                                   Orientation="Horizontal"
+                                                   Maximum="{TemplateBinding ScrollableWidth}"
+                                                   ViewportSize="{TemplateBinding ViewportWidth}"
+                                                   Value="{Binding Path=HorizontalOffset, RelativeSource={RelativeSource TemplatedParent}, Mode=OneWay}"
+                                                   Visibility="{TemplateBinding ComputedHorizontalScrollBarVisibility}"
+                                                   Style="{StaticResource ModernScrollBar}" />
+                                    </Grid>
+                                </ControlTemplate>
+                            </ScrollViewer.Template>
+                            <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                        </ScrollViewer>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
         <Style.Resources>
 
             <!-- Styles for the Column Resizer -->
@@ -97,7 +168,7 @@
                 <Setter Property="Cursor"
                         Value="Hand" />
                 <Setter Property="Foreground"
-                        Value="{StaticResource Black80}" />
+                        Value="{StaticResource Black60}" />
                 <Setter Property="FontSize"
                         Value="{StaticResource BodyFontSize}" />
                 <Setter Property="FontFamily"
@@ -113,9 +184,7 @@
                                     </Grid.ColumnDefinitions>
                                     <Border x:Name="BackgroundBorder"
                                             Grid.ColumnSpan="2"
-                                            Background="Transparent"
-                                            BorderBrush="{StaticResource Black20}"
-                                            BorderThickness="0,0,0,1" />
+                                            Background="Transparent" />
 
                                     <!-- Header Text Area Styles -->
                                     <TextBlock x:Name="HeaderText"
@@ -187,7 +256,7 @@
                                          Value="0">
                                     <Setter Property="Visibility"
                                             Value="Collapsed"
-                                            TargetName="PART_LeftHeaderGripper"></Setter>
+                                            TargetName="PART_LeftHeaderGripper" />
                                 </Trigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
@@ -205,8 +274,6 @@
                         Value="28" />
                 <Setter Property="Foreground"
                         Value="{StaticResource Black60}" />
-                <Setter Property="FontSize"
-                        Value="{StaticResource SmallFontSize}" />
                 <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type DataGridCell}">

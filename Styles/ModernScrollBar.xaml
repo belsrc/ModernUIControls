@@ -51,15 +51,35 @@
     <ControlTemplate x:Key="ThumbTemplate"
                      TargetType="Thumb">
         <Border Background="{TemplateBinding BorderBrush}"
-                Padding="0">
+                Padding="0"
+                Opacity=".2">
             <Border Background="{TemplateBinding Background}"
                     BorderThickness="0" />
+            <VisualStateManager.VisualStateGroups>
+                <VisualStateGroup x:Name="CommonStates">
+                    <VisualState x:Name="Normal" />
+                    <VisualState x:Name="MouseOver">
+                        <Storyboard>
+                            <DoubleAnimation Duration="0:0:0"
+                                             Storyboard.TargetProperty="Opacity"
+                                             To="1" />
+                        </Storyboard>
+                    </VisualState>
+                    <VisualState x:Name="Pressed">
+                        <Storyboard>
+                            <DoubleAnimation Duration="0:0:0"
+                                             Storyboard.TargetProperty="Opacity"
+                                             To="1" />
+                        </Storyboard>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
         </Border>
     </ControlTemplate>
 
-    <!-- Scroll Bar Template -->
-    <ControlTemplate x:Key="ScrollBarTemplate"
-                     TargetType="ScrollBar">
+    <!-- Vertical Scroll Bar Template -->
+    <ControlTemplate x:Key="VerticalBarTemplate"
+                     TargetType="{x:Type ScrollBar}">
         <Grid>
             <Border Background="{StaticResource Black20}"
                     BorderBrush="{StaticResource Black40}"
@@ -68,15 +88,55 @@
                 <!-- BorderThickness : 0 and Padding : 0 for truly flat look -->
                 <Track x:Name="PART_Track"
                        IsDirectionReversed="True">
+
                     <!-- Top Lg Repeat Button -->
                     <Track.DecreaseRepeatButton>
                         <RepeatButton Command="ScrollBar.PageUpCommand"
                                       Template="{StaticResource RepeatBtnTemplate}" />
                     </Track.DecreaseRepeatButton>
+
+                    <!-- Scroller Thumb -->
                     <Track.Thumb>
                         <Thumb Template="{StaticResource ThumbTemplate}"
-                               Background="{TemplateBinding Background}" />
+                               Background="{TemplateBinding Background}"
+                               Margin="1,0,1,0" />
                     </Track.Thumb>
+
+                    <!-- Bottom Lg Repeat Button -->
+                    <Track.IncreaseRepeatButton>
+                        <RepeatButton Command="ScrollBar.PageDownCommand"
+                                      Template="{StaticResource RepeatBtnTemplate}" />
+                    </Track.IncreaseRepeatButton>
+                </Track>
+            </Border>
+        </Grid>
+    </ControlTemplate>
+
+    <!-- Horizontal Scroll Bar Template -->
+    <ControlTemplate x:Key="HorizontalBarTemplate"
+                     TargetType="{x:Type ScrollBar}">
+        <Grid>
+            <Border Background="{StaticResource Black20}"
+                    BorderBrush="{StaticResource Black40}"
+                    BorderThickness="1"
+                    Padding="1">
+                <!-- BorderThickness : 0 and Padding : 0 for truly flat look -->
+                <Track x:Name="PART_Track"
+                       IsDirectionReversed="False">
+
+                    <!-- Top Lg Repeat Button -->
+                    <Track.DecreaseRepeatButton>
+                        <RepeatButton Command="ScrollBar.PageUpCommand"
+                                      Template="{StaticResource RepeatBtnTemplate}" />
+                    </Track.DecreaseRepeatButton>
+
+                    <!-- Scroller Thumb -->
+                    <Track.Thumb>
+                        <Thumb Template="{StaticResource ThumbTemplate}"
+                               Background="{TemplateBinding Background}"
+                               Margin="0,1,0,1" />
+                    </Track.Thumb>
+
                     <!-- Bottom Lg Repeat Button -->
                     <Track.IncreaseRepeatButton>
                         <RepeatButton Command="ScrollBar.PageDownCommand"
@@ -90,28 +150,32 @@
     <!-- Start ScrollBar Styles -->
     <Style x:Key="ModernScrollBar"
            TargetType="{x:Type ScrollBar}">
+        <Setter Property="OverridesDefaultStyle"
+                Value="true" />
         <Setter Property="Background"
                 Value="{StaticResource Black80}" />
-        <Setter Property="Template"
-                Value="{StaticResource ScrollBarTemplate}" />
         <Style.Triggers>
+
+            <!-- Horizontal Orientation Trigger -->
             <Trigger Property="Orientation"
                      Value="Horizontal">
                 <Setter Property="Width"
                         Value="Auto" />
                 <Setter Property="Height"
                         Value="15" />
-                <Setter Property="MaxHeight"
-                        Value="15" />
+                <Setter Property="Template"
+                        Value="{StaticResource HorizontalBarTemplate}" />
             </Trigger>
+
+            <!-- Vertical Orientation Trigger -->
             <Trigger Property="Orientation"
                      Value="Vertical">
                 <Setter Property="Width"
                         Value="15" />
-                <Setter Property="MaxWidth"
-                        Value="15" />
                 <Setter Property="Height"
                         Value="Auto" />
+                <Setter Property="Template"
+                        Value="{StaticResource VerticalBarTemplate}" />
             </Trigger>
         </Style.Triggers>
     </Style>

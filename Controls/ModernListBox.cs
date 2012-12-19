@@ -1,5 +1,5 @@
 ﻿// -------------------------------------------------------------------------------
-//    ModernTabControl.cs
+//    ModernListBox.cs
 //    Copyright (c) 2012 Bryan Kizer
 //    All rights reserved.
 //    https://github.com/belsrc/ModernUIControls
@@ -31,20 +31,20 @@
 //    NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 //    SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 // -------------------------------------------------------------------------------
-namespace ModernUIControls.Controls {
+namespace StyleTestingApp {
     using System.Windows;
     using System.Windows.Controls;
 
     /// <summary>
-    /// Represents a Modern UI tab control.
+    /// Represents a Modern UI list box control.
     /// </summary>
-    public class ModernTabControl : TabControl {
+    class ModernListBox : ListBox {
         /// <summary>
-        /// Initializes a new instance of the ModernTabControl class.
+        /// Initializes a new instance of the ModernListBox class.
         /// </summary>
-        public ModernTabControl()
+        public ModernListBox()
             : base() {
-            this.Style = FindResource( "ModernTabControl" ) as Style;
+                this.Style = FindResource( "ModernListBox" ) as Style;
         }
     }
 }

@@ -40,9 +40,11 @@
              d:DesignHeight="20"
              d:DesignWidth="56"
              Name="SlideCheckControl"
-             MouseLeftButtonDown="SlideCheckControl_MouseLeftButtonDown"
+             Background="#FFFAFAFA"
+             BorderBrush="#FFCDCDCD"
              ClipToBounds="True"
              Cursor="Hand"
+             MouseLeftButtonDown="SlideCheckControl_MouseLeftButtonDown"
              Loaded="SlideCheckControl_Loaded">
     <Grid ClipToBounds="True"
           Height="20"
@@ -58,42 +60,42 @@
                 HorizontalAlignment="Left">
             <Canvas Name="layer1"
                     RenderTransform="0.3,0,0,0.3,0,-295.63295">
-                <Path Fill="{StaticResource Black20}"
+                <Path Fill="{Binding BorderBrush,ElementName=SlideCheckControl}"
                       Name="outerBorderOne">
                     <Path.Data>
                         <PathGeometry FillRule="Nonzero"
                                       Figures="M0,985.44344C56.666669,985.44344 113.33333,985.44344 170,985.44344 170,1007.7497 170,1030.056 170,1052.3622 113.33333,1052.3622 56.666669,1052.3622 0,1052.3622 0,1030.056 0,1007.7497 0,985.44344z" />
                     </Path.Data>
                 </Path>
-                <Path Fill="{StaticResource White100}"
+                <Path Fill="{Binding Background,ElementName=SlideCheckControl}"
                       Name="InnerBorderOne">
                     <Path.Data>
                         <PathGeometry FillRule="Nonzero"
                                       Figures="M8,993.67958C59.333329,993.67958 110.66667,993.67958 162,993.67958 162,1010.4951 162,1027.3106 162,1044.1261 110.66667,1044.1261 59.333329,1044.1261 8,1044.1261 8,1027.3106 8,1010.4951 8,993.67958z" />
                     </Path.Data>
                 </Path>
-                <Path Fill="{Binding CheckedColor,ElementName=SlideCheckControl}"
+                <Path Fill="{Binding CheckedBrush,ElementName=SlideCheckControl}"
                       Name="checkedFill">
                     <Path.Data>
                         <PathGeometry FillRule="Nonzero"
                                       Figures="M12,997.82723C60.666669,997.82723 109.33333,997.82723 158,997.82723 158,1011.8776 158,1025.9279 158,1039.9782 109.33333,1039.9782 60.666669,1039.9782 12,1039.9782 12,1025.9279 12,1011.8776 12,997.82723z" />
                     </Path.Data>
                 </Path>
-                <Path Fill="{StaticResource Black20}"
+                <Path Fill="{Binding BorderBrush,ElementName=SlideCheckControl}"
                       Name="outerBorderTwo">
                     <Path.Data>
                         <PathGeometry FillRule="Nonzero"
                                       Figures="M170,985.44345C226.66667,985.44345 283.33333,985.44345 340,985.44345 340,1007.7497 340,1030.056 340,1052.3622 283.33333,1052.3622 226.66667,1052.3622 170,1052.3622 170,1030.056 170,1007.7497 170,985.44345z" />
                     </Path.Data>
                 </Path>
-                <Path Fill="{StaticResource White100}"
+                <Path Fill="{Binding Background,ElementName=SlideCheckControl}"
                       Name="innerBorderTwo">
                     <Path.Data>
                         <PathGeometry FillRule="Nonzero"
                                       Figures="M178,993.67959C229.33333,993.67959 280.66667,993.67959 332,993.67959 332,1010.4951 332,1027.3106 332,1044.1261 280.66667,1044.1261 229.33333,1044.1261 178,1044.1261 178,1027.3106 178,1010.4951 178,993.67959z" />
                     </Path.Data>
                 </Path>
-                <Path Fill="{Binding UncheckedColor,ElementName=SlideCheckControl}"
+                <Path Fill="{Binding UncheckedBrush,ElementName=SlideCheckControl}"
                       Name="uncheckedFill">
                     <Path.Data>
                         <PathGeometry FillRule="Nonzero"
@@ -102,7 +104,7 @@
                 </Path>
                 <Rectangle RadiusX="0"
                            RadiusY="0"
-                           Fill="{Binding SliderColor,ElementName=SlideCheckControl}"
+                           Fill="{Binding ThumbBrush,ElementName=SlideCheckControl}"
                            Name="slider"
                            Width="40"
                            Height="66.918999"

@@ -72,18 +72,6 @@
     <SolidColorBrush x:Key="Blue20"
                      Color="#331BA1E2" />
 
-    <!-- Teal Brush Colors -->
-    <SolidColorBrush x:Key="Teal100"
-                     Color="#FF00ABA9" />
-    <SolidColorBrush x:Key="Teal80"
-                     Color="#CC00ABA9" />
-    <SolidColorBrush x:Key="Teal60"
-                     Color="#9900ABA9" />
-    <SolidColorBrush x:Key="Teal40"
-                     Color="#6600ABA9" />
-    <SolidColorBrush x:Key="Teal20"
-                     Color="#3300ABA9" />
-
     <!-- Purple Brush Colors -->
     <SolidColorBrush x:Key="Purple100"
                      Color="#FF910091" />
@@ -131,30 +119,6 @@
                      Color="#66E51400" />
     <SolidColorBrush x:Key="Red20"
                      Color="#33E51400" />
-
-    <!-- Pink Brush Colors -->
-    <SolidColorBrush x:Key="Pink100"
-                     Color="#FFE671B8" />
-    <SolidColorBrush x:Key="Pink80"
-                     Color="#CCE671B8" />
-    <SolidColorBrush x:Key="Pink60"
-                     Color="#99E671B8" />
-    <SolidColorBrush x:Key="Pink40"
-                     Color="#66E671B8" />
-    <SolidColorBrush x:Key="Pink20"
-                     Color="#33E671B8" />
-
-    <!-- Brown Brush Colors -->
-    <SolidColorBrush x:Key="Brown100"
-                     Color="#FFA05000" />
-    <SolidColorBrush x:Key="Brown80"
-                     Color="#CCA05000" />
-    <SolidColorBrush x:Key="Brown60"
-                     Color="#99A05000" />
-    <SolidColorBrush x:Key="Brown40"
-                     Color="#66A05000" />
-    <SolidColorBrush x:Key="Brown20"
-                     Color="#33A05000" />
 
     <!-- Yellow Brush Colors -->
     <SolidColorBrush x:Key="Yellow100"

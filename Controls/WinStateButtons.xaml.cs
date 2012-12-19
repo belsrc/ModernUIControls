@@ -48,6 +48,8 @@ namespace ModernUIControls.Controls {
     ///     IsCloseVisible: bool
     ///     IsMinimizeVisible: bool
     ///     IsMaximizeVisible: bool
+    ///     ForegroundHover: Brush
+    ///     BackgroundHover: Brush
     /// </remarks>
     public partial class WinStateButtons : UserControl {
         /// <summary>
@@ -59,6 +61,41 @@ namespace ModernUIControls.Controls {
 
         /* Properties
         ---------------------------------------------------------------------------------------*/
+
+        /// <summary>
+        /// Dependency Property for ForegroundHover.
+        /// </summary>
+        public static readonly DependencyProperty ForegroundHoverProperty = DependencyProperty.Register( "ForegroundHover",
+                                                                                                         typeof( Brush ),
+                                                                                                         typeof( WinStateButtons ),
+                                                                                                         new PropertyMetadata( new SolidColorBrush(
+                                                                                                                Color.FromArgb( 255, 51, 51, 51 ) ) )
+                                                                                                       );
+
+        /// <summary>
+        /// Gets or sets the foreground hover brush color.
+        /// </summary>
+        public Brush ForegroundHover {
+            get { return ( Brush )GetValue( ForegroundHoverProperty ); }
+            set { SetValue( ForegroundHoverProperty, value ); }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static readonly DependencyProperty BackgroundHoverProperty = DependencyProperty.Register( "BackgroundHover",
+                                                                                                         typeof( Brush ),
+                                                                                                         typeof( WinStateButtons ),
+                                                                                                         new PropertyMetadata( new SolidColorBrush(
+                                                                                                                Color.FromArgb( 255, 200, 200, 200 ) ) )
+                                                                                                       );
+        /// <summary>
+        /// 
+        /// </summary>
+        public Brush BackgroundHover {
+            get { return ( Brush )GetValue( BackgroundHoverProperty ); }
+            set { SetValue( BackgroundHoverProperty, value ); }
+        }
 
         /// <summary>
         /// Dependency Property for IsCloseVisible.
@@ -114,51 +151,65 @@ namespace ModernUIControls.Controls {
         /* Event Handlers
            ---------------------------------------------------------------------------------------*/
 
-        // Event handler for the minimize/close button Mouse Enter event.
+        // Event handler for the minimize/close button Mouse Enter event. 
         // Fades the background color and foreground color of the canvas.
         private void SvgButton_MouseEnter( object sender, MouseEventArgs e ) {
-            // Start/Stop values for the fill
-            SolidColorBrush fillBrush = ( ( sender as Canvas ).Children[ 0 ] as Path ).Fill as SolidColorBrush;
-            Color fillCol = Color.FromArgb( 255, 51, 51, 51 );
+            Canvas can = sender as Canvas;
 
-            // Start/Stop values for the background
-            SolidColorBrush bgBrush = ( sender as Canvas ).Background as SolidColorBrush;
-            Color bgCol = Color.FromArgb( 255, 200, 200, 200 );
+            // Check if we can animate the foreground color
+            if( this.Foreground.GetType() == typeof( SolidColorBrush ) &&
+                ForegroundHover.GetType() == typeof( SolidColorBrush ) ) {
+                SolidColorBrush fillBrush = ( can.Children[ 0 ] as Path ).Fill as SolidColorBrush;
 
-            ( ( sender as Canvas ).Children[ 0 ] as Path ).Fill = EaseBrush(
-                                                                        fillBrush,
-                                                                        fillCol,
-                                                                        new Duration( TimeSpan.FromSeconds( .2 ) )
-                                                                  );
+                ( can.Children[ 0 ] as Path ).Fill = EaseBrush(
+                                                            fillBrush,
+                                                            ( ForegroundHover as SolidColorBrush ).Color,
+                                                            new Duration( TimeSpan.FromSeconds( .2 ) )
+                                                        );
+            }
 
-            ( sender as Canvas ).Background = EaseBrush(
-                                                    bgBrush,
-                                                    bgCol,
-                                                    new Duration( TimeSpan.FromSeconds( .2 ) )
-                                              );
+            // Check if we can animate the background color
+            if( this.Background.GetType() == typeof( SolidColorBrush ) &&
+                BackgroundHover.GetType() == typeof( SolidColorBrush ) ) {
+                SolidColorBrush bgBrush = can.Background as SolidColorBrush;
+
+                can.Background = EaseBrush(
+                                        bgBrush,
+                                        ( BackgroundHover as SolidColorBrush ).Color,
+                                        new Duration( TimeSpan.FromSeconds( .2 ) )
+                                    );
+            }
         }
 
-        // Event handler for the minimize/close button Mouse Leave event.
+        // Event handler for the minimize/close button Mouse Leave event. 
         // Fades the background color and foreground color of the canvas.
         private void SvgButton_MouseLeave( object sender, MouseEventArgs e ) {
-            // Start/Stop values for the fill
-            SolidColorBrush fillBrush = ( ( sender as Canvas ).Children[ 0 ] as Path ).Fill as SolidColorBrush;
-            Color fillCol = Color.FromArgb( 255, 187, 187, 187 );
+            Canvas can = sender as Canvas;
 
-            // Start/Stop values for the background
-            SolidColorBrush bgBrush = ( sender as Canvas ).Background as SolidColorBrush;
+            // Check if we can animate the foreground color
+            if( this.Foreground.GetType() == typeof( SolidColorBrush ) &&
+                ForegroundHover.GetType() == typeof( SolidColorBrush ) ) {
 
-            ( ( sender as Canvas ).Children[ 0 ] as Path ).Fill = EaseBrush(
-                                                                        fillBrush,
-                                                                        fillCol,
-                                                                        new Duration( TimeSpan.FromSeconds( .2 ) )
-                                                                  );
+                SolidColorBrush fillBrush = ( can.Children[ 0 ] as Path ).Fill as SolidColorBrush;
 
-            ( sender as Canvas ).Background = EaseBrush(
-                                                   bgBrush,
-                                                   ( Color )ColorConverter.ConvertFromString( Application.Current.Resources[ "White100" ].ToString() ),
-                                                   new Duration( TimeSpan.FromSeconds( .2 ) )
-                                               );
+                ( can.Children[ 0 ] as Path ).Fill = EaseBrush(
+                                                            fillBrush,
+                                                            ( this.Foreground as SolidColorBrush ).Color,
+                                                            new Duration( TimeSpan.FromSeconds( .2 ) )
+                                                        );
+            }
+
+            // Check if we can animate the background color
+            if( this.Background.GetType() == typeof( SolidColorBrush ) &&
+                BackgroundHover.GetType() == typeof( SolidColorBrush ) ) {
+                SolidColorBrush bgBrush = ( sender as Canvas ).Background as SolidColorBrush;
+
+                can.Background = EaseBrush(
+                                        bgBrush,
+                                        ( this.Background as SolidColorBrush ).Color,
+                                        new Duration( TimeSpan.FromSeconds( .2 ) )
+                                    );
+            }
         }
 
         // Event handler for the Close button click event.

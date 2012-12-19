@@ -50,12 +50,12 @@
                 HorizontalAlignment="Right"
                 VerticalAlignment="Top"
                 Cursor="Hand"
-                Background="{DynamicResource White100}"
+                Background="{Binding Background, ElementName=StateButtons}"
                 MouseEnter="SvgButton_MouseEnter"
                 MouseLeave="SvgButton_MouseLeave"
                 MouseLeftButtonDown="MiniSvg_MouseLeftButtonDown"
                 Visibility="{Binding Path=IsMinimizeVisible, ElementName=StateButtons}">
-            <Path Fill="{DynamicResource Black40}"
+            <Path Fill="{Binding Foreground, ElementName=StateButtons}"
                   x:Name="pathMini">
                 <Path.Data>
                     <PathGeometry FillRule="Nonzero"
@@ -70,14 +70,14 @@
                 Width="30"
                 Height="30"
                 Cursor="Hand"
-                Background="{DynamicResource White100}"
+                Background="{Binding Background, ElementName=StateButtons}"
                 VerticalAlignment="Top"
                 HorizontalAlignment="Right"
                 MouseEnter="SvgButton_MouseEnter"
                 MouseLeave="SvgButton_MouseLeave"
                 MouseLeftButtonDown="MaxSvg_MouseLeftButtonDown"
                 Visibility="{Binding Path=IsMaximizeVisible, ElementName=StateButtons}">
-            <Path Fill="{DynamicResource Black40}"
+            <Path Fill="{Binding Foreground, ElementName=StateButtons}"
                   Name="window_multi_2_icon">
                 <Path.Data>
                     <PathGeometry FillRule="Nonzero"
@@ -93,13 +93,13 @@
                 ClipToBounds="True"
                 HorizontalAlignment="Right"
                 VerticalAlignment="Top"
-                Background="{DynamicResource White100}"
+                Background="{Binding Background, ElementName=StateButtons}"
                 Cursor="Hand"
                 MouseEnter="SvgButton_MouseEnter"
                 MouseLeave="SvgButton_MouseLeave"
                 MouseLeftButtonDown="CloseSvg_MouseLeftButtonDown"
                 Visibility="{Binding Path=IsCloseVisible, ElementName=StateButtons}">
-            <Path Fill="{DynamicResource Black40}"
+            <Path Fill="{Binding Foreground, ElementName=StateButtons}"
                   x:Name="pathCancel">
                 <Path.Data>
                     <PathGeometry FillRule="Nonzero"
