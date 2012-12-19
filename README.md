@@ -8,13 +8,13 @@ States: Rest (Top), Hover (Bottom)
 ![alt Modern Button](http://bryanckizer.com/gitimg/button.png)  
 
 **ModernDataGrid**  
-Cell States (Left to Right): Rest, Hover, Active  
+Cell States (Left to Right): Rest, Hover, Selected  
 ![alt Modern Data Grid](http://bryanckizer.com/gitimg/datagrid.png)  
 
 **ModernScollBar** && **ModernScrollViewer**  
 ![alt Modern Scoll Bar](http://bryanckizer.com/gitimg/scroll-bar.png)  
 
-**ModernTabControl**  
+**ModernTabItem**  
 States (Left to Right): Rest, Hover, Active  
 ![alt Modern Tab Control](http://bryanckizer.com/gitimg/tab-control.png)  
 
