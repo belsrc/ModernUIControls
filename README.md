@@ -1,4 +1,4 @@
-# ModernUIControls
+# Modern UI Controls
 Modern UI Controls is a simple set of WPF styles and user controls that have a Modern/Metro UI look to them.
 
 Currently there are 7 different styles/controls.
