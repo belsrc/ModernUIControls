@@ -1,5 +1,5 @@
 ﻿<!--
-    ModernComboBox.xaml
+    SearchBox.xaml
     Copyright (c) 2012 Bryan Kizer
     All rights reserved.
 
@@ -42,61 +42,6 @@
         <ResourceDictionary Source="ModernScrollViewer.xaml" />
     </ResourceDictionary.MergedDictionaries>
 
-    <!-- Style for the Toggle Button -->
-    <ControlTemplate x:Key="ComboBoxToggleButton"
-                     TargetType="ToggleButton">
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-                <ColumnDefinition Width="20" />
-            </Grid.ColumnDefinitions>
-            <Border SnapsToDevicePixels="True"
-                    x:Name="Border"
-                    Grid.ColumnSpan="2"
-                    Background="Transparent" />
-            <Path x:Name="Arrow"
-                  Grid.Column="1"
-                  Opacity="0.6"
-                  Fill="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Foreground}"
-                  HorizontalAlignment="Center"
-                  VerticalAlignment="Center">
-                <Path.Data>
-                    <PathGeometry FillRule="Nonzero"
-                                  Figures="M8.0000017,1.0692254C6.6686725,2.39823 5.3373434,3.7272346 4.0060142,5.0562392 2.670676,3.7312627 1.3353381,2.4062861 -4.935988E-08,1.0813096 0.35471658,0.72382785 0.70943302,0.36634629 1.0641497,0.00886454 2.0436979,0.98081783 3.0232462,1.9527709 4.0027945,2.9247242 4.9794084,1.9498161 5.9560225,0.97490816 6.9326364,3.4664434E-08 7.2884248,0.35640855 7.6442133,0.71281687 8.0000017,1.0692254z" />
-                </Path.Data>
-
-            </Path>
-        </Grid>
-
-        <!-- Triggers for the Toggle Button -->
-        <ControlTemplate.Triggers>
-
-            <!-- Mouse Over Trigger -->
-            <Trigger Property="ToggleButton.IsMouseOver"
-                     Value="true">
-                <Setter TargetName="Arrow"
-                        Property="Opacity"
-                        Value="1" />
-            </Trigger>
-
-            <!-- Is Checked Trigger -->
-            <Trigger Property="ToggleButton.IsChecked"
-                     Value="true">
-                <Setter TargetName="Arrow"
-                        Property="Opacity"
-                        Value="1" />
-                <Setter TargetName="Arrow"
-                        Property="RenderTransform">
-                    <Setter.Value>
-                        <RotateTransform Angle="180"
-                                         CenterX="4"
-                                         CenterY="3" />
-                    </Setter.Value>
-                </Setter>
-            </Trigger>
-        </ControlTemplate.Triggers>
-    </ControlTemplate>
-
     <!-- Combobox Textbox Styles -->
     <ControlTemplate x:Key="ComboBoxTextBox"
                      TargetType="TextBox">
@@ -105,20 +50,18 @@
     </ControlTemplate>
 
     <!-- Start ComboBox Styles -->
-    <Style x:Key="ModernComboBox"
+    <Style x:Key="SearchBox"
            TargetType="ComboBox">
 
         <!-- Default Styles -->
+        <Setter Property="Background"
+                Value="{StaticResource Black5}" />
         <Setter Property="Foreground"
                 Value="{StaticResource Black80}" />
-        <Setter Property="Background"
-                Value="{StaticResource White100}" />
         <Setter Property="BorderBrush"
                 Value="{StaticResource Black40}" />
         <Setter Property="BorderThickness"
                 Value="1" />
-        <Setter Property="IsEditable"
-                Value="False" />
         <Setter Property="SnapsToDevicePixels"
                 Value="true" />
         <Setter Property="OverridesDefaultStyle"
@@ -129,6 +72,8 @@
                 Value="Auto" />
         <Setter Property="ScrollViewer.CanContentScroll"
                 Value="true" />
+        <Setter Property="IsEditable"
+                Value="True" />
         <Setter Property="MinWidth"
                 Value="120" />
         <Setter Property="MinHeight"
@@ -142,13 +87,88 @@
                         <Border BorderBrush="{TemplateBinding BorderBrush}"
                                 BorderThickness="{TemplateBinding BorderThickness}"
                                 Background="{TemplateBinding Background}" />
+
+                        <!-- Placeholder Text -->
+                        <TextBlock Foreground="{TemplateBinding Property=Foreground}"
+                                   Margin="5,0,0,0"
+                                   VerticalAlignment="Center"
+                                   Name="HolderText"
+                                   Opacity="0.4"
+                                   Text="{Binding SearchHolderText, RelativeSource={RelativeSource TemplatedParent}}"
+                                   Visibility="Hidden" />
+
+                        <!-- Toggle Button -->
                         <ToggleButton Name="ToggleButton"
-                                      Template="{StaticResource ComboBoxToggleButton}"
                                       Grid.Column="2"
                                       Focusable="false"
                                       Foreground="{TemplateBinding Foreground}"
                                       IsChecked="{Binding Path=IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
-                                      ClickMode="Press" />
+                                      ClickMode="Press">
+
+                            <!-- Toggle Button Styles -->
+                            <ToggleButton.Style>
+                                <Style TargetType="{x:Type ToggleButton}">
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="{x:Type ToggleButton}">
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition />
+                                                        <ColumnDefinition Width="20" />
+                                                    </Grid.ColumnDefinitions>
+                                                    <Border SnapsToDevicePixels="True"
+                                                            x:Name="Border"
+                                                            Grid.ColumnSpan="2"
+                                                            Background="Transparent" />
+                                                </Grid>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </ToggleButton.Style>
+                        </ToggleButton>
+
+                        <!-- Search Button -->
+                        <Button Name="BtnSearch"
+                                Background="{TemplateBinding Background}"
+                                Foreground="{TemplateBinding Foreground}"
+                                HorizontalAlignment="Right"
+                                Margin="0,0,0,0"
+                                Opacity="0.4"
+                                Width="20"
+                                Height="20">
+
+                            <!-- Search Button Styles -->
+                            <Button.Style>
+                                <Style TargetType="{x:Type Button}">
+                                    <Setter Property="Cursor"
+                                            Value="Hand" />
+                                    <Setter Property="Focusable"
+                                            Value="False" />
+                                    <Setter Property="Template">
+                                        <Setter.Value>
+                                            <ControlTemplate TargetType="{x:Type Button}">
+                                                <Grid Background="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Background}"
+                                                      Margin="0,0,5,0">
+                                                    <Path x:Name="MagGlass"
+                                                          Margin="0,-4,0,0"
+                                                          Fill="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Foreground}"
+                                                          HorizontalAlignment="Center"
+                                                          VerticalAlignment="Center">
+                                                        <Path.Data>
+                                                            <PathGeometry FillRule="Nonzero"
+                                                                          Figures="M17.388956,15.55011L13.417779,11.579C13.998483,10.66382 14.335255,9.57938 14.335255,8.41761 14.335291,5.15464 11.680655,2.5 8.417609,2.5 5.154636,2.5 2.5,5.15464 2.5,8.41761 2.5,11.68058 5.154636,14.33522 8.417609,14.33522 9.521711,14.33522 10.555947,14.031 11.441456,13.50235L15.439066,17.5 17.388956,15.55011z M4.706019,8.41761C4.706019,6.37102 6.371019,4.70598 8.417609,4.70598 10.464199,4.70598 12.129272,6.37102 12.129272,8.41761 12.129272,10.4642 10.464235,12.1292 8.417609,12.1292 6.371019,12.1292 4.706019,10.4642 4.706019,8.41761z" />
+                                                        </Path.Data>
+                                                    </Path>
+                                                </Grid>
+                                            </ControlTemplate>
+                                        </Setter.Value>
+                                    </Setter>
+                                </Style>
+                            </Button.Style>
+                        </Button>
+
+                        <!--Content Presenter -->
                         <ContentPresenter Name="ContentSite"
                                           IsHitTestVisible="False"
                                           Content="{TemplateBinding SelectionBoxItem}"
@@ -157,8 +177,10 @@
                                           Margin="5,5,23,5"
                                           VerticalAlignment="Center"
                                           HorizontalAlignment="Left" />
+
+                        <!-- Edit Text Box -->
                         <TextBox x:Name="PART_EditableTextBox"
-                                 CaretBrush="Green"
+                                 CaretBrush="{StaticResource Black100}"
                                  Style="{x:Null}"
                                  Template="{StaticResource ComboBoxTextBox}"
                                  HorizontalAlignment="Left"
@@ -169,6 +191,8 @@
                                  Foreground="{TemplateBinding Foreground}"
                                  Visibility="Hidden"
                                  IsReadOnly="{TemplateBinding IsReadOnly}" />
+
+                        <!-- Actual Drop Down Area -->
                         <Popup VerticalOffset="-1"
                                SnapsToDevicePixels="True"
                                Name="Popup"
@@ -196,6 +220,54 @@
 
                     <!-- Combo Box Triggers -->
                     <ControlTemplate.Triggers>
+
+                        <!-- Placeholder Empty Text Trigger -->
+                        <Trigger Property="Text"
+                                 SourceName="PART_EditableTextBox"
+                                 Value="">
+                            <Setter TargetName="HolderText"
+                                    Property="Visibility"
+                                    Value="Visible" />
+                        </Trigger>
+
+                        <!-- Placeholder Focus Trigger -->
+                        <Trigger Property="IsFocused"
+                                 SourceName="PART_EditableTextBox"
+                                 Value="True">
+                            <Setter TargetName="HolderText"
+                                    Property="Visibility"
+                                    Value="Hidden" />
+                        </Trigger>
+
+                        <!-- Placeholder Null Text Trigger -->
+                        <Trigger Property="Content"
+                                 SourceName="ContentSite"
+                                 Value="{x:Null}">
+                            <Setter TargetName="HolderText"
+                                    Property="Visibility"
+                                    Value="Visible" />
+                        </Trigger>
+
+                        <!-- Mouse Over Trigger -->
+                        <Trigger Property="IsMouseOver"
+                                 Value="True">
+                            <Setter TargetName="BtnSearch"
+                                    Property="Opacity"
+                                    Value="1" />
+                            <Setter TargetName="HolderText"
+                                    Property="Opacity"
+                                    Value="1" />
+                            <Setter Property="Background"
+                                    Value="{StaticResource White100}" />
+                        </Trigger>
+
+                        <!-- Control Focus Trigger -->
+                        <Trigger Property="ToggleButton.IsChecked"
+                                 Value="true">
+                            <Setter TargetName="HolderText"
+                                    Property="Visibility"
+                                    Value="Hidden" />
+                        </Trigger>
 
                         <!-- Has Items Trigger -->
                         <Trigger Property="HasItems"

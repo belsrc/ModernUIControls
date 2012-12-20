@@ -17,6 +17,8 @@
                 <ResourceDictionary Source="Styles/ModernListBox.xaml" />
                 <ResourceDictionary Source="Styles/ModernExpander.xaml" />
                 <ResourceDictionary Source="Styles/ModernComboBox.xaml" />
+                <ResourceDictionary Source="Styles/SearchBox.xaml" />
+                <ResourceDictionary Source="Styles/ModernTextBox.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

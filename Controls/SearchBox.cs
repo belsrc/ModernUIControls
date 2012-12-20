@@ -1,5 +1,5 @@
 ﻿// -------------------------------------------------------------------------------
-//    ModernTabItem.cs
+//    SearchBox.cs
 //    Copyright (c) 2012 Bryan Kizer
 //    All rights reserved.
 //    https://github.com/belsrc/ModernUIControls
@@ -35,53 +35,71 @@ namespace ModernUIControls.Controls {
     using System.Windows;
     using System.Windows.Controls;
 
-
     /// <summary>
-    /// Represents a Modern UI tab item.
+    /// Represents a Modern UI search control.
     /// </summary>
-    /// <remarks>
-    /// Public Events:
-    ///     TabCloseClick
-    /// </remarks>
-    public class ModernTabItem : TabItem {
-        /* Constructors
-           ---------------------------------------------------------------------------------------*/
-
+    public class SearchBox : ComboBox {
         /// <summary>
-        /// Initializes a new instance of the ModernTabItem class.
+        /// Initializes a new instance of the SearchButton class.
         /// </summary>
-        public ModernTabItem()
+        public SearchBox()
             : base() {
-            this.Style = FindResource( "ModernTabItem" ) as Style;
+            this.Style = FindResource( "SearchBox" ) as Style;
         }
 
         /* Event
            ---------------------------------------------------------------------------------------*/
 
         /// <summary>
-        /// Routed event register for the TabCloseClick event.
+        /// Routed event register for the SearchClick event.
         /// </summary>
-        public static readonly RoutedEvent TabCloseClickEvent = EventManager.RegisterRoutedEvent( "TabCloseClick",
-                                                                                                  RoutingStrategy.Bubble,
-                                                                                                  typeof( RoutedEventHandler ),
-                                                                                                  typeof( ModernTabItem )
-                                                                                                );
+        public static readonly RoutedEvent SearchClickEvent = EventManager.RegisterRoutedEvent( "SearchClick",
+                                                                                                RoutingStrategy.Bubble,
+                                                                                                typeof( RoutedEventHandler ),
+                                                                                                typeof( SearchBox )
+                                                                                              );
 
         /// <summary>
         /// Adds or removes the event handler for the TabCloseClick event.
         /// </summary>
-        public event RoutedEventHandler TabCloseClick {
-            add { AddHandler( TabCloseClickEvent, value ); }
-            remove { RemoveHandler( TabCloseClickEvent, value ); }
+        public event RoutedEventHandler SearchClick {
+            add { AddHandler( SearchClickEvent, value ); }
+            remove { RemoveHandler( SearchClickEvent, value ); }
         }
+
+
+        /* Properties
+           ---------------------------------------------------------------------------------------*/
+
+        /// <summary>
+        /// Dependency Property for SearchHolderText.
+        /// </summary>
+        public static readonly DependencyProperty SearchHolderTextProperty = DependencyProperty.Register( "SearchHolderText",
+                                                                                                         typeof( string ),
+                                                                                                         typeof( SearchBox ),
+                                                                                                         new PropertyMetadata( string.Empty )
+                                                                                                       );
+
+        /// <summary>
+        /// Gets or sets the placeholder text value.
+        /// </summary>
+        public string SearchHolderText {
+            get { return ( string )GetValue( SearchHolderTextProperty ); }
+            set { SetValue( SearchHolderTextProperty, value ); }
+        }
+
 
         /* Event Handlers
            ---------------------------------------------------------------------------------------*/
 
-        // Event handler for the tab close click event.
-        // Raises the routed TabCloseClick event.
-        private void closeButton_Click( object sender, System.Windows.RoutedEventArgs e ) {
-            this.RaiseEvent( new RoutedEventArgs( TabCloseClickEvent, this ) );
+        // Event handler for the search button click event.
+        // Adds the search term to the collection.
+        // Clears the search box text.
+        // Raises the routed SearchClick event.
+        private void searchButton_Click( object sender, System.Windows.RoutedEventArgs e ) {
+            this.Items.Add( new Label() { Content = this.Text } );
+            this.Text = string.Empty;
+            this.RaiseEvent( new RoutedEventArgs( SearchClickEvent, this ) );
         }
 
         /* Methods
@@ -96,9 +114,9 @@ namespace ModernUIControls.Controls {
         public override void OnApplyTemplate() {
             base.OnApplyTemplate();
 
-            Button closeButton = base.GetTemplateChild( "CloseBtn" ) as Button;
-            if( closeButton != null )
-                closeButton.Click += new RoutedEventHandler( closeButton_Click );
+            Button searchButton = base.GetTemplateChild( "BtnSearch" ) as Button;
+            if( searchButton != null )
+                searchButton.Click += new RoutedEventHandler( searchButton_Click );
         }
     }
 }
