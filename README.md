@@ -15,11 +15,11 @@ Cell States (Left to Right): Rest, Hover, Selected
 Cell States (Top Down): Rest, Hover, Selected  
 ![alt Modern Data Grid](http://bryanckizer.com/gitimg/Listbox.png)  
 
-**ModernTextBox**  
+**ModernTextBox** [Placeholder optional]  
 Cell States (Top Down): Rest, Hover, Active   
 ![alt Modern Data Grid](http://bryanckizer.com/gitimg/text-box.png) 
 
-**SearchBox**  
+**SearchBox** [Placeholder optional]  
 Cell States (Top Down): Rest, Hover, Active  
 ![alt Modern Data Grid](http://bryanckizer.com/gitimg/search-box.png) 
 
