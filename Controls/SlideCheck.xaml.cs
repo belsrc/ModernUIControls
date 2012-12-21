@@ -45,12 +45,12 @@ namespace ModernUIControls.Controls {
     /// <remarks>
     /// Public Control Properties:
     ///     IsChecked: bool
-    ///     CheckedBrush: Brush
-    ///     UncheckedBrush: Brush
-    ///     ThumbBrush: Brush
-    ///
+    ///     CheckedColor: Brush
+    ///     UncheckedColor: Brush
+    ///     SliderColor: Brush
+    /// 
     /// Public Event
-    ///     CheckChanged
+    ///     CheckChanged: Bubble
     /// </remarks>
     public partial class SlideCheck : UserControl {
         /* Constructors
@@ -66,8 +66,22 @@ namespace ModernUIControls.Controls {
         /* Event
            ---------------------------------------------------------------------------------------*/
 
-        // Occurs when the control is clicked and the IsChecked properties changes.
-        public event EventHandler CheckChanged;
+        /// <summary>
+        /// Routed event register for the CheckChanged event.
+        /// </summary>
+        public static readonly RoutedEvent CheckChangedEvent = EventManager.RegisterRoutedEvent( "CheckChanged",
+                                                                                                 RoutingStrategy.Bubble,
+                                                                                                 typeof( RoutedEventHandler ),
+                                                                                                 typeof( SlideCheck )
+                                                                                               );
+
+        /// <summary>
+        /// Adds or removes the event handler for the CheckChanged event.
+        /// </summary>
+        public event RoutedEventHandler CheckChanged {
+            add { AddHandler( CheckChangedEvent, value ); }
+            remove { RemoveHandler( CheckChangedEvent, value ); }
+        }
 
         /* Properties
            ---------------------------------------------------------------------------------------*/
@@ -75,8 +89,8 @@ namespace ModernUIControls.Controls {
         /// <summary>
         /// Dependency Property for CheckedColor.
         /// </summary>
-        public static readonly DependencyProperty CheckedBrushProperty =
-                                                  DependencyProperty.Register( "CheckedBrush",              // name of the dependency property to register
+        public static readonly DependencyProperty CheckedColorProperty =
+                                                  DependencyProperty.Register( "CheckedColor",              // name of the dependency property to register
                                                                                typeof( Brush ),             // type of the property
                                                                                typeof( SlideCheck ),        // owner type that is registering the property
                                                                                new PropertyMetadata(        // metadata (default value) for the property
@@ -89,21 +103,21 @@ namespace ModernUIControls.Controls {
         /// <summary>
         /// Gets or sets the fill color for the Checked path.
         /// </summary>
-        public Brush CheckedBrush {
-            get { return ( Brush )GetValue( CheckedBrushProperty ); }
-            set { SetValue( CheckedBrushProperty, value ); }
+        public Brush CheckedColor {
+            get { return ( Brush )GetValue( CheckedColorProperty ); }
+            set { SetValue( CheckedColorProperty, value ); }
         }
 
         /// <summary>
         /// Dependency Property for UncheckedColor.
         /// </summary>
-        public static readonly DependencyProperty UncheckedBrushProperty =
-                                                  DependencyProperty.Register( "UncheckedBrush",            // name of the dependency property to register
+        public static readonly DependencyProperty UncheckedColorProperty =
+                                                  DependencyProperty.Register( "UncheckedColor",            // name of the dependency property to register
                                                                                typeof( Brush ),             // type of the property
                                                                                typeof( SlideCheck ),        // owner type that is registering the property
                                                                                new PropertyMetadata(        // metadata (default value) for the property
                                                                                    new SolidColorBrush(
-                                                                                       Color.FromArgb( 255, 125, 125, 125 )
+                                                                                       Color.FromArgb( 153, 51, 51, 51 )
                                                                                    )
                                                                                )
                                                                              );
@@ -111,16 +125,16 @@ namespace ModernUIControls.Controls {
         /// <summary>
         /// Gets or sets the fill color for the Unchecked path.
         /// </summary>
-        public Brush UncheckedBrush {
-            get { return ( Brush )GetValue( UncheckedBrushProperty ); }
-            set { SetValue( UncheckedBrushProperty, value ); }
+        public Brush UncheckedColor {
+            get { return ( Brush )GetValue( UncheckedColorProperty ); }
+            set { SetValue( UncheckedColorProperty, value ); }
         }
 
         /// <summary>
         /// Dependency Property for SliderColor.
         /// </summary>
-        public static readonly DependencyProperty ThumbBrushProperty =
-                                                  DependencyProperty.Register( "ThumbBrush",               // name of the dependency property to register
+        public static readonly DependencyProperty SliderColorProperty =
+                                                  DependencyProperty.Register( "SliderColor",            // name of the dependency property to register
                                                                                typeof( Brush ),             // type of the property
                                                                                typeof( SlideCheck ),        // owner type that is registering the property
                                                                                new PropertyMetadata(        // metadata (default value) for the property
@@ -133,9 +147,9 @@ namespace ModernUIControls.Controls {
         /// <summary>
         /// Gets or sets the fill color for the Slider path.
         /// </summary>
-        public Brush ThumbBrush {
-            get { return ( Brush )GetValue( ThumbBrushProperty ); }
-            set { SetValue( ThumbBrushProperty, value ); }
+        public Brush SliderColor {
+            get { return ( Brush )GetValue( SliderColorProperty ); }
+            set { SetValue( SliderColorProperty, value ); }
         }
 
         /// <summary>
@@ -162,17 +176,15 @@ namespace ModernUIControls.Controls {
 
         // Event handler for the IsCheckedProperty value changed event.
         private static void CheckedValueChanged( DependencyObject obj, DependencyPropertyChangedEventArgs args ) {
-            SlideCheck sc = ( obj as SlideCheck );
+            SlideCheck sc = obj as SlideCheck;
             if( sc.IsChecked ) {
-                sc.AnimateSlider( 0 );
+                sc.AnimateSlider( 1 );
             }
             else {
                 sc.AnimateSlider( -46 );
             }
 
-            if( sc.CheckChanged != null ) {
-                sc.CheckChanged.Invoke( sc, EventArgs.Empty );
-            }
+            sc.RaiseEvent( new RoutedEventArgs( CheckChangedEvent, sc ) );
         }
 
         // Event handler for the control Click event.
@@ -181,7 +193,7 @@ namespace ModernUIControls.Controls {
         }
 
         // Event handler for the Loaded event.
-        // If checked, sets the slider to the true position, skipping the animation.
+        // If checked, sets the slider to the true position, skipping the animation. 
         private void SlideCheckControl_Loaded( object sender, RoutedEventArgs e ) {
             if( this.IsChecked ) {
                 this.slideSvg.Margin = new Thickness( 1, 0, 0, 0 );

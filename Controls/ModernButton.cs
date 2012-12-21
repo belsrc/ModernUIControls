@@ -34,6 +34,7 @@
 namespace ModernUIControls.Controls {
     using System.Windows;
     using System.Windows.Controls;
+    using System.Windows.Media;
 
     /// <summary>
     /// Represents a Modern UI button control.
@@ -45,6 +46,28 @@ namespace ModernUIControls.Controls {
         public ModernButton()
             : base() {
             this.Style = FindResource( "ModernButton" ) as Style;
+        }
+
+        /* Properties
+           ---------------------------------------------------------------------------------------*/
+
+        /// <summary>
+        /// Dependency Property for DisabledBackground.
+        /// </summary>
+        public static readonly DependencyProperty DisabledBackgroundProperty = DependencyProperty.Register( "DisabledBackground",
+                                                                                                            typeof( Brush ),
+                                                                                                            typeof( ModernButton ),
+                                                                                                            new PropertyMetadata(
+                                                                                                                new SolidColorBrush(
+                                                                                                                    Color.FromArgb( 255, 204, 204, 204 ) ) )
+                                                                                                            );
+
+        /// <summary>
+        /// Gets or sets the background color brush for the button's disabled state.
+        /// </summary>
+        public Brush DisabledBackground {
+            get { return ( Brush )GetValue( DisabledBackgroundProperty ); }
+            set { SetValue( DisabledBackgroundProperty, value ); }
         }
     }
 }

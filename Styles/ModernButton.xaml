@@ -50,9 +50,9 @@
         <Setter Property="OverridesDefaultStyle"
                 Value="true" />
         <Setter Property="MinHeight"
-                Value="23" />
+                Value="15" />
         <Setter Property="MinWidth"
-                Value="75" />
+                Value="15" />
         <Setter Property="Opacity"
                 Value=".6" />
         <Setter Property="Background"
@@ -69,7 +69,8 @@
                             BorderThickness="{TemplateBinding BorderThickness}"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             Background="Transparent">
-                        <Grid Background="{TemplateBinding Background}">
+                        <Grid Name="RootGrid"
+                              Background="{TemplateBinding Background}">
                             <ContentPresenter Margin="2"
                                               HorizontalAlignment="Center"
                                               VerticalAlignment="Center"
@@ -79,6 +80,13 @@
 
                     <!-- Event Triggers, VisualStates Could Be Used. This Is Faster -->
                     <ControlTemplate.Triggers>
+
+                        <Trigger Property="IsEnabled"
+                                 Value="False">
+                            <Setter TargetName="RootGrid"
+                                    Property="Background"
+                                    Value="{Binding DisabledBackground, RelativeSource={RelativeSource TemplatedParent}}" />
+                        </Trigger>
 
                         <!-- Mouse Enter Event -->
                         <EventTrigger RoutedEvent="MouseEnter">
