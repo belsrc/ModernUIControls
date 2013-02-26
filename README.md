@@ -1,50 +1,6 @@
-# Modern UI Controls
-Modern UI Controls is a simple set of WPF styles and user controls that have a Modern/Metro UI look to them.
-
-Currently there are 7 different styles/controls.
-
-**ModernButton**  
-States: Rest (Top), Hover (Bottom)  
-![alt Modern Button](http://bryanckizer.com/gitimg/button.png)  
-
-**ModernDataGrid**  
-Cell States (Left to Right): Rest, Hover, Selected  
-![alt Modern Data Grid](http://bryanckizer.com/gitimg/datagrid.png)  
-
-**ModernListBox**  
-Item States (Top Down): Rest, Hover, Selected  
-![alt Modern Data Grid](http://bryanckizer.com/gitimg/Listbox.png)  
-
-**ModernTextBox** [Placeholder optional]  
-States (Top Down): Rest, Hover, Active   
-![alt Modern Data Grid](http://bryanckizer.com/gitimg/text-box.png) 
-
-**SearchBox** [Placeholder optional]  
-States (Top Down): Rest, Hover, Active  
-![alt Modern Data Grid](http://bryanckizer.com/gitimg/search-box.png) 
-
-**ModerComboBox**  
-![alt Modern Data Grid](http://bryanckizer.com/gitimg/combo-box.png)  
-
-**ModernScollBar** && **ModernScrollViewer**  
-States: Rest (Side), Hover (Bottom)  
-![alt Modern Scoll Bar](http://bryanckizer.com/gitimg/scroll-bar.png)  
-
-**ModernTabItem**  
-States (Left to Right): Rest, Hover, Active  
-![alt Modern Tab Control](http://bryanckizer.com/gitimg/tab-control.png)  
-
-**SlideCheck**  
-States: Unchecked (Left), Checked (Right)  
-![alt Slide Check](http://bryanckizer.com/gitimg/check-sliders.png)  
-
-**WindowStateButtons**  
-States (Left to Right): Rest, Hover, Rest  
-![alt Window State Buttons](http://bryanckizer.com/gitimg/win-state-btns.png)  
-
-**Colors**  
-All include a 100, 80, 60, 40, and 20 opacity version
-![alt Colors](http://bryanckizer.com/gitimg/colors.png)  
+# Support Stopped
+Please see [Metro-UI-Toolkit](https://github.com/belsrc/Metro-UI-Toolkit "Metro UI Toolkit")
+ 
 
 ### License
 ModernUIControls is released under a BSD 3-Clause License
